@@ -1,0 +1,146 @@
+{
+  "name": "core-infinity-qq",
+  "version": "0.9.2",
+  "author": "Telyin",
+  "license": "LicenseRef-TelyinCore-NonCommercial-1.0",
+  "description": "通过 OneBot v11 协议端收发 QQ 私聊、群聊文字、表情和语音。",
+  "keywords": [
+    "core-infinity"
+  ],
+  "main": "index.py",
+  "telyincore": {
+    "kind": "infinity",
+    "api": 1,
+    "botScope": 1,
+    "displayName": "QQ 连接",
+    "channels": [
+      {
+        "label": "Q",
+        "markers": [
+          {
+            "scope": "群",
+            "filter": "answered",
+            "pattern": "\\[QQ群(?<room>-?\\d+)·消息#(?<id>-?\\d+)\\]\\s*(?<who>[^：]+)："
+          },
+          {
+            "scope": "私",
+            "pattern": "\\[QQ私聊(?::(?<room>\\d+))?·消息#(?<id>-?\\d+)\\]\\s*(?<who>[^：]+)："
+          },
+          {
+            "scope": "私",
+            "pattern": "\\[QQ private:(?<room>\\d+) 消息#(?<id>-?\\d+)\\]\\s*(?<who>[^\\n:：]+?)(?:\\(\\d+\\))?[:：]\\s*"
+          },
+          {
+            "scope": "群",
+            "filter": "answered",
+            "pattern": "\\[QQ group:(?<room>\\d+) 消息#(?<id>-?\\d+)\\]\\s*(?<who>[^\\n:：]+?)(?:\\(\\d+\\))?[:：]\\s*"
+          }
+        ],
+        "speech": {
+          "tools": [
+            "qq_send_text",
+            "qq_send_reply",
+            "qq_send_image",
+            "qq_send_voice"
+          ],
+          "text": "text",
+          "destination": "{scope}:qq:{target}",
+          "receipt": "QQ 协议端已接受 {scope}:{target}（message_id={receipt_id}）"
+        },
+        "routes": [
+          {
+            "scope": "私",
+            "pattern": "^(?:private:)?qq:(?<room>\\d+)$"
+          },
+          {
+            "scope": "群",
+            "pattern": "^group:qq:(?<room>\\d+)$"
+          }
+        ],
+        "source": "qq",
+        "context": "channel/qq.md"
+      }
+    ],
+    "toolGuide": [
+      {
+        "group": "消息与语音",
+        "name": "qq_send_text",
+        "title": "发送文字"
+      },
+      {
+        "group": "消息与语音",
+        "name": "qq_send_reply",
+        "title": "引用并回复消息"
+      },
+      {
+        "group": "消息与语音",
+        "name": "qq_send_voice",
+        "title": "合成并发送语音"
+      },
+      {
+        "group": "消息与语音",
+        "name": "qq_read_group_history",
+        "title": "回查共同群聊记录"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_send_image",
+        "title": "把插件生成的图片发到 QQ"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_look_image",
+        "title": "查看收到的图片"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_send_face",
+        "title": "发送 QQ 原生表情"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_list_custom_faces",
+        "title": "列出收藏表情"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_inspect_custom_face",
+        "title": "识别表情包内容"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_collect_sticker",
+        "title": "收藏表情包"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_correct_sticker",
+        "title": "按 owner 的纠正更新表情资料"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_send_custom_face",
+        "title": "发送收藏表情"
+      },
+      {
+        "group": "图片与表情",
+        "name": "qq_send_saved_image",
+        "title": "发回本次会话收到的图片或 GIF"
+      },
+      {
+        "group": "主动分享",
+        "name": "qq_sharing_preview",
+        "title": "审核拟分享的内容"
+      },
+      {
+        "group": "主动分享",
+        "name": "qq_share_to_owner",
+        "title": "向 owner 分享"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AR15MOD3/core-infinity-qq.git"
+  }
+}

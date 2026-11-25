@@ -1,0 +1,19 @@
+{
+  "httpUrl": "http://127.0.0.1:3000",
+  "wsUrl": "ws://127.0.0.1:3001",
+  "token": "",
+  "privates": [],
+  "groups": [],
+  "proactiveTarget": "",
+  "transcribeVoice": false,
+  "asrModelDir": "",
+  "asrLanguage": "auto",
+  "asrUseItn": true,
+  "asrThreads": 3,
+  "historyBackfillMinutes": 10,
+  "ttsUrl": "",
+  "ttsEnabled": false,
+  "ttsModel": "",
+  "ttsVoice": "default",
+  "ttsSendMode": "on_demand"
+}
